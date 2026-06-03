@@ -4,74 +4,470 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Kotak Shoot</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="icon.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #080b11;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --glow-color: rgba(99, 102, 241, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
+
+        /* Ambient background glow */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            filter: blur(80px);
+        }
+
         .container {
-            background-color: #fff;
-            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 50px 40px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                        0 0 50px var(--glow-color);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Language Selector Toggle */
+        .lang-selector {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 4px;
+            border-radius: 12px;
+            gap: 4px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 6px 12px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
+
+        .lang-btn.active {
+            background: var(--accent-gradient);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 22px;
+            object-fit: cover;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4),
+                        0 0 20px rgba(99, 102, 241, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .app-icon:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5),
+                        0 0 30px rgba(168, 85, 247, 0.5);
+        }
+
         h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
         }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0) 100%);
+            margin: 30px 0;
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
         h2 {
-            color: #2980b9;
-            margin-top: 30px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
         p, li {
-            color: #555;
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            margin-bottom: 12px;
         }
+
         ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+        li {
+            position: relative;
             padding-left: 20px;
         }
-        .footer {
-            margin-top: 40px;
+
+        li::before {
+            content: "•";
+            color: #6366f1;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .highlight-card {
+            background: rgba(99, 102, 241, 0.04);
+            border: 1px dashed rgba(99, 102, 241, 0.2);
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            padding: 12px 18px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #fff;
+            min-width: 90px;
+        }
+
+        .contact-value {
+            color: #a855f7;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-value:hover {
+            text-decoration: underline;
+        }
+
+        footer {
             text-align: center;
-            font-size: 0.9em;
-            color: #7f8c8d;
-            border-top: 1px solid #ecf0f1;
+            margin-top: 50px;
             padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        /* Language switching helper classes */
+        [data-lang] {
+            display: none;
+        }
+
+        [data-lang].active-lang {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive styling */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .lang-selector {
+                position: relative;
+                margin: 0 auto 20px auto;
+                justify-content: center;
+                max-width: 150px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Privacy Policy for Kotak Shoot</h1>
-        <p><strong>Effective Date:</strong> June 4, 2026</p>
+        <header>
+            <div class="lang-selector">
+                <button class="lang-btn active" onclick="switchLanguage('en')" id="btn-en">EN</button>
+                <button class="lang-btn" onclick="switchLanguage('id')" id="btn-id">ID</button>
+            </div>
+            
+            <div class="logo-container">
+                <img src="icon.png" alt="Kotak Shoot Logo" class="app-icon">
+            </div>
+            <h1>Kotak Shoot</h1>
+            
+            <p class="subtitle" data-lang="en" class="active-lang">Privacy Policy &bull; Last Updated: June 4, 2026</p>
+            <p class="subtitle" data-lang="id">Kebijakan Privasi &bull; Terakhir Diperbarui: 4 Juni 2026</p>
+        </header>
 
-        <p>At <strong>Kotak Shoot</strong>, accessible from the app, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Kotak Shoot and how we use it.</p>
+        <div class="divider"></div>
 
-        <h2>1. Information We Collect</h2>
-        <p>Kotak Shoot is built as an offline gameplay application. We do not collect, store, or share any personal information or data from our users. All gameplay data, scores, and settings are saved locally on your device and are not transmitted to any external servers.</p>
+        <!-- ENGLISH CONTENT -->
+        <div data-lang="en" class="active-lang" id="content-en">
+            <section>
+                <h2>Overview</h2>
+                <p>At <strong>Kotak Shoot</strong>, we are committed to providing you with a fun, engaging, and secure offline gaming experience. This Privacy Policy outlines our approach to privacy and explains that we prioritize keeping your personal information completely private.</p>
+            </section>
 
-        <h2>2. Permissions</h2>
-        <p>Our app does not require any special permissions to access your personal data, contacts, location, or device storage.</p>
+            <section>
+                <h2>1. Information We Collect</h2>
+                <p>Kotak Shoot is designed and built entirely as an <strong>offline game</strong>. We values your privacy and can confirm that:</p>
+                <div class="highlight-card">
+                    <ul>
+                        <li><strong>No Personal Data Collection:</strong> We do not request, collect, or store any personal data (such as names, email addresses, phone numbers, or device IDs).</li>
+                        <li><strong>100% Offline gameplay:</strong> All scores, gameplay achievements, settings, and progress data are stored exclusively on your device's local memory.</li>
+                        <li><strong>No Server Uploads:</strong> No local game data is ever sent, shared, or uploaded to external servers.</li>
+                    </ul>
+                </div>
+            </section>
 
-        <h2>3. Children's Information</h2>
-        <p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
-        <p>Kotak Shoot does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our App, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
+            <section>
+                <h2>2. Device Permissions</h2>
+                <p>Kotak Shoot does not require or request any special, sensitive device permissions (such as access to contacts, location, camera, microphone, or storage files).</p>
+            </section>
 
-        <h2>4. Changes to This Privacy Policy</h2>
-        <p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately, after they are posted on this page.</p>
+            <section>
+                <h2>3. Children's Privacy</h2>
+                <p>Our game is designed to be family-friendly. Since we do not collect any personal data or information whatsoever, our application is safe for children. We do not knowingly collect, store, or solicit any information from children under the age of 13.</p>
+            </section>
 
-        <h2>5. Contact Us</h2>
-        <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.</p>
-        <p><strong>Developer:</strong> Arina Parama</p>
+            <section>
+                <h2>4. Policy Updates</h2>
+                <p>We may update this Privacy Policy from time to time to align with new app builds or regulatory requirements. Any modifications will be posted directly on this page and will take effect immediately upon publishing.</p>
+            </section>
 
-        <div class="footer">
-            <p>&copy; 2026 Arina Parama. All rights reserved.</p>
+            <section>
+                <h2>5. Contact & Developer Info</h2>
+                <p>If you have any questions, feedback, or concerns regarding this policy, please feel free to reach out:</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-label">Developer</span>
+                        <span class="contact-value">Arina Parama</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">GitHub</span>
+                        <a href="https://github.com/arinaparama" class="contact-value" target="_blank" rel="noopener noreferrer">github.com/arinaparama</a>
+                    </div>
+                </div>
+            </section>
         </div>
+
+        <!-- INDONESIAN CONTENT -->
+        <div data-lang="id" id="content-id">
+            <section>
+                <h2>Ikhtisar</h2>
+                <p>Di <strong>Kotak Shoot</strong>, kami berkomitmen untuk memberikan Anda pengalaman bermain game offline yang menyenangkan, menarik, dan aman. Kebijakan Privasi ini menjelaskan pendekatan kami terhadap privasi dan menegaskan bahwa kami memprioritaskan kerahasiaan informasi pribadi Anda sepenuhnya.</p>
+            </section>
+
+            <section>
+                <h2>1. Informasi yang Kami Kumpulkan</h2>
+                <p>Kotak Shoot dirancang dan dibuat sepenuhnya sebagai <strong>game offline</strong>. Kami sangat menghargai privasi Anda dan mengonfirmasi bahwa:</p>
+                <div class="highlight-card">
+                    <ul>
+                        <li><strong>Tanpa Pengumpulan Data Pribadi:</strong> Kami tidak meminta, mengumpulkan, atau menyimpan data pribadi apa pun (seperti nama, alamat email, nomor telepon, atau ID perangkat).</li>
+                        <li><strong>100% Gameplay Offline:</strong> Semua skor, pencapaian game, pengaturan, dan data kemajuan permainan disimpan secara eksklusif di memori lokal perangkat Anda.</li>
+                        <li><strong>Tanpa Pengunggahan ke Server:</strong> Tidak ada data game lokal yang dikirimkan, dibagikan, atau diunggah ke server eksternal.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Izin Perangkat</h2>
+                <p>Kotak Shoot tidak memerlukan atau meminta izin perangkat yang sensitif atau khusus (seperti akses ke kontak, lokasi, kamera, mikrofon, atau file penyimpanan).</p>
+            </section>
+
+            <section>
+                <h2>3. Privasi Anak-Anak</h2>
+                <p>Game kami dirancang agar ramah keluarga. Karena kami sama sekali tidak mengumpulkan data atau informasi pribadi apa pun, aplikasi kami aman untuk anak-anak. Kami tidak dengan sengaja mengumpulkan, menyimpan, atau meminta informasi apa pun dari anak-anak di bawah usia 13 tahun.</p>
+            </section>
+
+            <section>
+                <h2>4. Pembaruan Kebijakan</h2>
+                <p>Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu untuk menyesuaikan dengan build aplikasi baru atau persyaratan regulasi. Setiap perubahan akan diposting langsung di halaman ini dan akan segera berlaku setelah dipublikasikan.</p>
+            </section>
+
+            <section>
+                <h2>5. Kontak & Info Pengembang</h2>
+                <p>Jika Anda memiliki pertanyaan, masukan, atau kekhawatiran terkait kebijakan ini, silakan hubungi kami:</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-label">Pengembang</span>
+                        <span class="contact-value">Arina Parama</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">GitHub</span>
+                        <a href="https://github.com/arinaparama" class="contact-value" target="_blank" rel="noopener noreferrer">github.com/arinaparama</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Arina Parama. All rights reserved.</p>
+        </footer>
     </div>
+
+    <script>
+        function switchLanguage(lang) {
+            // Update active states for language blocks
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.classList.add('active-lang');
+                } else {
+                    el.classList.remove('active-lang');
+                }
+            });
+
+            // Update active states for buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.id === 'btn-' + lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Set default view on load
+        window.addEventListener('DOMContentLoaded', () => {
+            switchLanguage('en');
+        });
+    </script>
 </body>
 </html>
